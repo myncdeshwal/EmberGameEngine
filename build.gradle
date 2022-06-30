@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+}
+
+version '1.0-SNAPSHOT'
+
+repositories {
+    flatDir{
+        dirs 'libs'
+    }
+    mavenCentral()
+    //jcenter()
+
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+project.ext.lwjglVersion = "3.2.3"
+project.ext.jomlVersion = "1.10.2"
+project.ext.lwjglNatives = "natives-windows"
+project.ext.imguiVersion = '1.81.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.flash3388.util:javabeans:1.0'
+    implementation 'org.spongepowered:math:2.0.0'
+
+    //JBox2D is a physics engine
+    implementation name: 'jbox2d-library'
+
+    // GSON is for serialized basically to store level
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    // ImGUI stuff a GUI
+    implementation "io.github.spair:imgui-java-app:$imguiVersion"
+
+    // LWJGL stuff game library which connects opengl which is a graph
+    implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
+
+    //google cloud speech recognition
+    implementation 'com.google.cloud:google-cloud-speech:2.2.6'
+
+    implementation "org.lwjgl:lwjgl"
+    implementation "org.lwjgl:lwjgl-assimp"
+    implementation "org.lwjgl:lwjgl-glfw"
+    implementation "org.lwjgl:lwjgl-nfd"
+    implementation "org.lwjgl:lwjgl-openal"
+    implementation "org.lwjgl:lwjgl-opengl"
+    implementation "org.lwjgl:lwjgl-stb"
+    runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-assimp::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-nfd::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-openal::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
+    implementation "org.joml:joml:${jomlVersion}"
+
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
+}
+
